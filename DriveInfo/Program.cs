@@ -6,6 +6,7 @@
         {
             DriveInfo drive = new DriveInfo("C", 521, 124);
             Console.WriteLine(drive.TotalSpace);
+            Console.WriteLine(drive.Name);
         }
     }
 }
