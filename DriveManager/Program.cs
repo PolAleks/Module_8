@@ -24,6 +24,8 @@ namespace DriveManager
             GetCatalogs();
 
             GetCountFoldersAndFiles(@"D:\\");
+
+            AddAdnDeleteDirectory();
         }
         static void GetCatalogs()
         {
@@ -73,6 +75,25 @@ namespace DriveManager
                 }
             }
             catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        static void AddAdnDeleteDirectory()
+        {
+            try
+            {
+                DirectoryInfo dir = new DirectoryInfo(@"D:\\Уроки по CSharp\Новая папка");
+                if (!dir.Exists)
+                {
+                    dir.Create();
+                    Console.WriteLine(dir.FullName);
+
+                    dir.Delete(true);
+                }
+                else throw new Exception("Такая директория уже существует!");
+            }catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
