@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DriveInfo", "DriveInfo\DriveInfo.csproj", "{A5B0344D-4BDA-4FFF-B0FE-269ECCCCF8B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DriveManager", "DriveManager\DriveManager.csproj", "{04118B15-E154-41F2-94C0-94A7098A7FD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DriveManager", "DriveManager\DriveManager.csproj", "{04118B15-E154-41F2-94C0-94A7098A7FD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWriter", "FileWriter\FileWriter.csproj", "{D6A56FCF-1F95-4292-A7CA-B68B591919FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{04118B15-E154-41F2-94C0-94A7098A7FD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04118B15-E154-41F2-94C0-94A7098A7FD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04118B15-E154-41F2-94C0-94A7098A7FD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6A56FCF-1F95-4292-A7CA-B68B591919FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6A56FCF-1F95-4292-A7CA-B68B591919FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6A56FCF-1F95-4292-A7CA-B68B591919FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6A56FCF-1F95-4292-A7CA-B68B591919FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

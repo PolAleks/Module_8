@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.VisualBasic.FileIO;
+using System.Linq.Expressions;
 
 namespace DriveManager
 {
@@ -6,18 +7,18 @@ namespace DriveManager
     {
         static void Main(string[] args)
         {
-            DriveInfo[] drivers = DriveInfo.GetDrives();
-            foreach (DriveInfo driver in drivers) 
-            {
-                Console.WriteLine($"Название диска: {driver.Name}");
-                Console.WriteLine($"Тип диска: {driver.DriveType}");
-                if (driver.IsReady)
-                {
-                    Console.WriteLine($"Объем диска: {driver.TotalSize}");
-                    Console.WriteLine($"Свободно {driver.TotalFreeSpace}");
-                    Console.WriteLine($"Метка: {driver.VolumeLabel}");
-                }
-            }
+            //DriveInfo[] drivers = DriveInfo.GetDrives();
+            //foreach (DriveInfo driver in drivers) 
+            //{
+            //    Console.WriteLine($"Название диска: {driver.Name}");
+            //    Console.WriteLine($"Тип диска: {driver.DriveType}");
+            //    if (driver.IsReady)
+            //    {
+            //        Console.WriteLine($"Объем диска: {driver.TotalSize}");
+            //        Console.WriteLine($"Свободно {driver.TotalFreeSpace}");
+            //        Console.WriteLine($"Метка: {driver.VolumeLabel}");
+            //    }
+            //}
 
             Console.WriteLine(new string('-', 50));
 
@@ -26,6 +27,11 @@ namespace DriveManager
             GetCountFoldersAndFiles(@"D:\\");
 
             AddAdnDeleteDirectory();
+
+            DeleteTestFolder();
+
+            DeleteTestFolder2();
+
         }
         static void GetCatalogs()
         {
@@ -84,7 +90,7 @@ namespace DriveManager
         {
             try
             {
-                DirectoryInfo dir = new DirectoryInfo(@"D:\\Уроки по CSharp\Новая папка");
+                DirectoryInfo dir = new DirectoryInfo(@"D:\\Тестовая папка");
                 if (!dir.Exists)
                 {
                     dir.Create();
@@ -94,6 +100,49 @@ namespace DriveManager
                 }
                 else throw new Exception("Такая директория уже существует!");
             }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        static void DeleteTestFolder()
+        {
+            try
+            {
+                DirectoryInfo dir = new DirectoryInfo(@"C:\Users\user\Desktop\testFolder");
+                string dirBasket = @"C:\$RECYCLE.BIN\testFolder";
+
+                if (!dir.Exists)
+                {
+                    dir.Create();
+                    Console.WriteLine(dir.FullName);
+                }
+
+                if (dir.Exists && !Directory.Exists(dirBasket))
+                    dir.MoveTo(dirBasket);
+                else
+                {
+                    throw new Exception($"{dir.Name} - отсутствует, перемещение в" +
+                                        $" корзину не может быть выполнено");
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        private static void DeleteTestFolder2()
+        {
+            try
+            {
+                string dirName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\NewFolder";
+                Directory.CreateDirectory(dirName);
+                Console.Write($"Move {dirName} to Recycle Bin (y/n)? ");
+                if (Console.ReadLine().ToLower() == "y")
+                {
+                    FileSystem.DeleteDirectory(dirName, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+                }
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
