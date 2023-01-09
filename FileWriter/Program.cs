@@ -28,6 +28,11 @@ namespace FileWriter
         }
         private static void GetTextFromCurrentFile(string nameFile)
         {
+            FileInfo file = new FileInfo(nameFile);
+            using (StreamWriter sw = file.AppendText()) 
+            {
+                sw.WriteLine("// Время запуска программы: {0}", DateTime.Now);
+            }
             string str = string.Empty;
             using (StreamReader sr = File.OpenText(nameFile))
             {
@@ -39,3 +44,6 @@ namespace FileWriter
         }
     }
 }
+
+// Время запуска программы: 09.01.2023 20:25:33
+// Время запуска программы: 09.01.2023 20:25:40
