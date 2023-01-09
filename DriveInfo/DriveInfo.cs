@@ -8,11 +8,17 @@ namespace DriveInfo
 {
     internal class DriveInfo
     {
-        public DriveInfo(string name, double size, double freeSpace)
+        public DriveInfo(string name, double totalSpace, double freeSpace)
         {
             Name = name;
-            TotalSpace = size;
+            TotalSpace = totalSpace;
             FreeSpace = freeSpace;
+        }
+        private Dictionary<string, Folder> folders = new Dictionary<string, Folder>(); 
+        public void CreateFolder(string nameFolder)
+        {
+            folders.Add(nameFolder, new Folder());
+            Console.WriteLine($"Папка {nameFolder} успешно создан!");
         }
         public string Name
         {
