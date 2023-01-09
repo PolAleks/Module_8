@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DriveInfo
 {
-    internal class DriveInfo
+    internal class Drive
     {
-        public DriveInfo(string name, double totalSpace, double freeSpace)
+        public Drive(string name, double totalSpace, double freeSpace)
         {
             Name = name;
             TotalSpace = totalSpace;
@@ -17,7 +17,7 @@ namespace DriveInfo
         private Dictionary<string, Folder> folders = new Dictionary<string, Folder>(); 
         public void CreateFolder(string nameFolder)
         {
-            folders.Add(nameFolder, new Folder());
+            folders.Add(nameFolder, new Folder(nameFolder));
             Console.WriteLine($"Папка {nameFolder} успешно создан!");
         }
         public string Name
