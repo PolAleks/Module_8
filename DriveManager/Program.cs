@@ -23,11 +23,11 @@ namespace DriveManager
 
             GetCatalogs();
 
-            GetCountFoldersAndFiles(@"S://");
+            GetCountFoldersAndFiles(@"D:\\");
         }
         static void GetCatalogs()
         {
-            string dirName = "D:\\";
+            string dirName = @"D:\\";
             if (Directory.Exists(dirName)) 
             {
                 Console.WriteLine("Папки:");
@@ -62,6 +62,14 @@ namespace DriveManager
                 else 
                 {
                     throw new Exception($"{directory} - такой директории нет");
+                }
+
+                DirectoryInfo newDir = new DirectoryInfo(dir.Root.ToString() + "/Новая папка");
+                if (!newDir.Exists)
+                {
+                    newDir.Create();
+                    Console.WriteLine($"Папок: {dir.GetDirectories().Length}\n" +
+                                      $"Файлов: {dir.GetFiles().Length}");
                 }
             }
             catch (Exception ex)
